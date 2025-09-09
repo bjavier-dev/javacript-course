@@ -273,3 +273,88 @@ if (favourite === 23) {
 }
 
 if (favourite !== 23) console.log('Why not 23?');
+
+// logical operators
+
+const hasDriversLicense = true; //A
+const hasGoodVision = true; //B
+
+console.log(`AND OPERATOR: ${hasDriversLicense && hasGoodVision}`);
+console.log(`OR OPERATOR: ${hasDriversLicense || hasGoodVision}`);
+console.log(`NOT OPERATOR: ${!hasDriversLicense}`);
+
+const isTired = false; //C
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log('Bernard can drive!');
+} else {
+  console.log('Someone else should drive...');
+}
+
+age = 20;
+const hasPermission = true;
+const hasExperience = true;
+
+if (age >= 18 && hasPermission && hasExperience) {
+  console.log('Approved to drive');
+} else {
+  console.log('Not approved to drive');
+}
+
+console.log("Age 20, permission true, experience false:",
+  (age >= 18 && hasPermission && hasExperience));
+const age1 = 19; // Try different values
+const hasID = true; // Try different values
+const isVIP = false; // Try different values
+
+// Your logic here:
+// if (...) {
+if ((age >= 21 && hasID) || isVIP) {
+//   console.log('Welcome to the club!');
+  console.log('Welcome to the club!');
+// } else {
+} else {
+//   console.log('Sorry, you cannot enter');
+  console.log('Sorry, you cannot enter');
+}
+// }
+
+////////////////////////////////////
+// The Conditional (Ternary) Operator
+
+const age2 = 23;
+
+// Basic ternary: condition ? valueIfTrue : valueIfFalse
+const drink = age2 >= 18 ? "wine" : "water";
+console.log(drink);
+
+// Equivalent if/else (more verbose)
+let drink2;
+if (age2 >= 18) {
+  drink2 = "wine";
+} else {
+  drink2 = "water";
+}
+console.log(drink2);
+
+console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
+
+////////////////////////////////////
+// Coding Challenge #4
+
+const bill = 40; // Test with 275, 40, and 430
+
+// Step 1: Create the tip calculation using ternary operator
+// Rule: 15% if between 50-300, otherwise 20%
+// Hint: bill >= 50 && bill <= 300
+
+const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+
+// Step 2: Create beautiful output with template literal
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+
+// Expected outputs:
+// Bill 275: "The bill was 275, the tip was 41.25, and the total value 316.25"
+// Bill 40:  "The bill was 40, the tip was 8, and the total value 48"
+// Bill 430: "The bill was 430, the tip was 86, and the total value 516"
