@@ -331,69 +331,144 @@
 // Objects vs Arrays Decision Making
 
 // Arrays
-const listOfYears = [1991, 1984, 2008, 2020];
-const shoppingList = ["apples", "bananas", "oranges"];
-const testScores = [85, 92, 78, 90];
+// const listOfYears = [1991, 1984, 2008, 2020];
+// const shoppingList = ["apples", "bananas", "oranges"];
+// const testScores = [85, 92, 78, 90];
 
-// Objects
-const person = {
-    name: "John",
-    age: 20,
-    occupation: "programmer"
-};
-const car = {
-    make: "Toyota",
-    model: "Camry",
-    year: 2020
-};
+// // Objects
+// const person = {
+//     name: "John",
+//     age: 20,
+//     occupation: "programmer"
+// };
+// const car = {
+//     make: "Toyota",
+//     model: "Camry",
+//     year: 2020
+// };
 
-// objects can contain arrays, arrays can contain objects
-const student = {
-    name: 'Sarah',
-    grades: [85, 92, 78],
-    address: {
-        steet: "123 Main St",
-        city: "New York",
-    },
-};
+// // objects can contain arrays, arrays can contain objects
+// const student = {
+//     name: 'Sarah',
+//     grades: [85, 92, 78],
+//     address: {
+//         steet: "123 Main St",
+//         city: "New York",
+//     },
+// };
 
-console.log(student.grades[0]);
-console.log(student.address.city);
+// console.log(student.grades[0]);
+// console.log(student.address.city);
 
-const john = {
-    firstName: "John",
-    lastName: "Doe",
-    birthYear: 1995,
-    job: "teacher",
-    friends: ["Michael", "Peter", "Steven"],
-    hasDriverLicense: true,
+// const john = {
+//     firstName: "John",
+//     lastName: "Doe",
+//     birthYear: 1995,
+//     job: "teacher",
+//     friends: ["Michael", "Peter", "Steven"],
+//     hasDriverLicense: true,
 
-    calcAge: function(birthYear) {
-        return 2025 - this.birthYear;
-    },
-}
+//     calcAge: function(birthYear) {
+//         return 2025 - this.birthYear;
+//     },
+// }
 
-console.log(john.calcAge());
+// console.log(john.calcAge());
 
-const johnImproved = {
-    firstName: "John",
-    lastName: "Doe",
-    birthYear: 1995,
-    job: "teacher",
-    friends: ["Michael", "Peter", "Steven"],
-    hasDriverLicense: true,
+// const johnImproved = {
+//     firstName: "John",
+//     lastName: "Doe",
+//     birthYear: 1995,
+//     job: "teacher",
+//     friends: ["Michael", "Peter", "Steven"],
+//     hasDriverLicense: true,
 
-    calcAge: function() {
-        this.age = 2025 - this.birthYear;
-        return this.age;
-    },
+//     calcAge: function() {
+//         this.age = 2025 - this.birthYear;
+//         return this.age;
+//     },
 
-    getSummary: function() {
-        return `${this.firstName} is a ${this.age}-year-old ${this.job}
-        , and he has ${this.hasDriverLicense ? 'a' : 'no'} driver's license.`;
-    }
-};
+//     getSummary: function() {
+//         return `${this.firstName} is a ${this.age}-year-old ${this.job}
+//         , and he has ${this.hasDriverLicense ? 'a' : 'no'} driver's license.`;
+//     }
+// };
 
-console.log(johnImproved.calcAge());
-console.log(johnImproved.age);
-console.log(johnImproved.getSummary());
+// console.log(johnImproved.calcAge());
+// console.log(johnImproved.age);
+// console.log(johnImproved.getSummary());
+
+// ////////////////////////////////////
+// // Coding Challenge #3 - User Profile System
+
+// const user = {
+//   firstName: "Sarah",
+//   lastName: "Johnson",
+//   birthYear: 1995,
+//   location: "New York",
+//   interests: ["photography", "travel", "coding"],
+//   friends: [
+//     { name: "Michael", status: "active" },
+//     { name: "Emma", status: "inactive" },
+//     { name: "David", status: "active" },
+//   ],
+//   isActive: true,
+
+//   // Calculate age method
+//   calcAge: function () {
+//     const currentYear = new Date().getFullYear();
+//     this.age = currentYear - this.birthYear;
+//     return this.age;
+//   },
+
+//   // Add friend method
+//   addFriend: function (name, status = "active") {
+//     this.friends.push({ name, status });
+//     return this.friends.length;
+//   },
+
+//   // Get active friends count
+//   getActiveFriends: function () {
+//     return this.friends.filter(friend => friend.status === "active").length;
+//   },
+
+//   // Toggle active status
+//   toggleStatus: function () {
+//     this.isActive = !this.isActive;
+//     return this.isActive;
+//   },
+
+//   // Generate profile summary
+//   getSummary: function () {
+//     // Ensure age is calculated
+//     const age = this.calcAge();
+
+//     const fullName = `${this.firstName} ${this.lastName}`;
+//     const activeStatus = this.isActive ? "Online" : "Offline";
+//     const totalFriends = this.friends.length;
+//     const activeFriends = this.getActiveFriends();
+//     const interestList = this.interests.join(", ");
+
+//     return `
+// --- User Profile Summary ---
+// Name: ${fullName}
+// Age: ${age}
+// Location: ${this.location}
+// Status: ${activeStatus}
+// Total Friends: ${totalFriends}
+// Active Friends: ${activeFriends}
+// Interests: ${interestList}
+// -----------------------------
+//     `.trim();
+//   },
+// };
+
+// // Test your user profile system
+// console.log(user.getSummary());
+
+// user.addFriend("Alex", "active");
+// user.toggleStatus();
+
+// console.log(`\nAfter updates:`);
+// console.log(user.getSummary());
+
