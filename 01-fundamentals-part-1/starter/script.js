@@ -32,7 +32,6 @@
 // // // // let myCurrentJob
 // // // // const PI
 
-
 // // // //bad
 // // // // let 3years
 // // // // let jonas&matilda
@@ -62,7 +61,6 @@
 
 // // // let dynamicVariable = 40;
 // // // console.log(dynamicVariable, typeof dynamicVariable);
-
 
 // // // // change to a string
 // // // dynamicVariable = "i am now a string!";
@@ -121,17 +119,17 @@
 
 // // console.log("Age comparison:");
 // // console.log(ageJonas > ageSarah);
-// // console.log(ageSarah >= 18); 
-// // console.log(ageJonas < 30); 
+// // console.log(ageSarah >= 18);
+// // console.log(ageJonas < 30);
 
 // // console.log("Number comparisons:");
 // // console.log(25 > 20);
 // // console.log(15 < 10);
 // // console.log(18 >= 18);
-// // console.log(16 <= 15); 
+// // console.log(16 <= 15);
 
 // // const isFullAge = ageSarah >= 18;
-// // console.log("Sarah is adult:", isFullAge); 
+// // console.log("Sarah is adult:", isFullAge);
 
 // // const isJonasOlder = ageJonas > ageSarah;
 // // console.log("Jonas is older:", isJonasOlder);
@@ -244,18 +242,18 @@ const age = 18;
 if (age === 18) console.log("You just became an adult!");
 if (age == 18) console.log("You just became an adult! (loose)");
 
-console.log('18' === 18);
-console.log('18' == 18); // coercion happens
+console.log("18" === 18);
+console.log("18" == 18); // coercion happens
 console.log(18 === 18);
 
 // why == can be dangerous
-console.log('0' == 0);
-console.log('0' == false);
+console.log("0" == 0);
+console.log("0" == false);
 console.log(0 == false);
 console.log(null === undefined); // special case
 
-console.log('' == 0);
-console.log('   ' == 0);
+console.log("" == 0);
+console.log("   " == 0);
 
 // best practice
 const favourite = Number(prompt("What's your favourite number?"));
@@ -263,16 +261,16 @@ console.log(favourite);
 console.log(typeof favourite);
 
 if (favourite === 23) {
-  console.log('Cool! 23 is an amazing number!');
+  console.log("Cool! 23 is an amazing number!");
 } else if (favourite === 7) {
-  console.log('7 is also a cool number!');
+  console.log("7 is also a cool number!");
 } else if (favourite === 9) {
-  console.log('9 is also a cool number!');
+  console.log("9 is also a cool number!");
 } else if (favourite !== 23) {
-  console.log('Number is not 23 or 7 or 9');
+  console.log("Number is not 23 or 7 or 9");
 }
 
-if (favourite !== 23) console.log('Why not 23?');
+if (favourite !== 23) console.log("Why not 23?");
 
 // logical operators
 
@@ -287,9 +285,9 @@ const isTired = false; //C
 console.log(hasDriversLicense && hasGoodVision && isTired);
 
 if (hasDriversLicense && hasGoodVision && !isTired) {
-  console.log('Bernard can drive!');
+  console.log("Bernard can drive!");
 } else {
-  console.log('Someone else should drive...');
+  console.log("Someone else should drive...");
 }
 
 age = 20;
@@ -297,13 +295,15 @@ const hasPermission = true;
 const hasExperience = true;
 
 if (age >= 18 && hasPermission && hasExperience) {
-  console.log('Approved to drive');
+  console.log("Approved to drive");
 } else {
-  console.log('Not approved to drive');
+  console.log("Not approved to drive");
 }
 
-console.log("Age 20, permission true, experience false:",
-  (age >= 18 && hasPermission && hasExperience));
+console.log(
+  "Age 20, permission true, experience false:",
+  age >= 18 && hasPermission && hasExperience
+);
 const age1 = 19; // Try different values
 const hasID = true; // Try different values
 const isVIP = false; // Try different values
@@ -311,12 +311,12 @@ const isVIP = false; // Try different values
 // Your logic here:
 // if (...) {
 if ((age >= 21 && hasID) || isVIP) {
-//   console.log('Welcome to the club!');
-  console.log('Welcome to the club!');
-// } else {
+  //   console.log('Welcome to the club!');
+  console.log("Welcome to the club!");
+  // } else {
 } else {
-//   console.log('Sorry, you cannot enter');
-  console.log('Sorry, you cannot enter');
+  //   console.log('Sorry, you cannot enter');
+  console.log("Sorry, you cannot enter");
 }
 // }
 
@@ -352,9 +352,13 @@ const bill = 40; // Test with 275, 40, and 430
 const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
 
 // Step 2: Create beautiful output with template literal
-console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+);
 
 // Expected outputs:
 // Bill 275: "The bill was 275, the tip was 41.25, and the total value 316.25"
 // Bill 40:  "The bill was 40, the tip was 8, and the total value 48"
 // Bill 430: "The bill was 430, the tip was 86, and the total value 516"
+
+// Temporary commit test
