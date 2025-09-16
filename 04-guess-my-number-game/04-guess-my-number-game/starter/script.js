@@ -18,41 +18,47 @@
 // console.log('Goal: Build a complete interactive game from scratch');
 // console.log('Focus: DOM manipulation, game state, and user interaction');
 
-// ////////////////////////////////////
-// // DOM Element Selection - The Foundation
-// console.log('=== DOM ELEMENT SELECTION ===');
+////////////////////////////////////
+// ** ADDITION: Define secretNumber and score early so they exist for first event listener **
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highscore = 0;
 
-// // Select elements by class name
-// const messageEl = document.querySelector('.message');
-// console.log(messageEl); // Shows the HTML element
+////////////////////////////////////
+// DOM Element Selection - The Foundation
+console.log('=== DOM ELEMENT SELECTION ===');
 
-// // Select elements by class name
-// const scoreEl = document.querySelector('.score');
-// console.log(scoreEl);
+// Select elements by class name
+const messageEl = document.querySelector('.message');
+console.log(messageEl); // Shows the HTML element
 
-// // Select input elements
-// const guessEl = document.querySelector('.guess');
-// console.log(guessEl);
+// Select elements by class name
+const scoreEl = document.querySelector('.score');
+console.log(scoreEl);
 
-// // Reading element content
-// console.log('Current message:', messageEl.textContent);
-// console.log('Current score:', scoreEl.textContent);
+// Select input elements
+const guessEl = document.querySelector('.guess');
+console.log(guessEl);
 
-// // Modifying element content
-// messageEl.textContent = 'Hello from JavaScript!';
-// scoreEl.textContent = '15';
+// Reading element content
+console.log('Current message:', messageEl.textContent);
+console.log('Current score:', scoreEl.textContent);
 
-// console.log('Elements updated!');
+// Modifying element content
+messageEl.textContent = 'Hello from JavaScript!';
+scoreEl.textContent = '15';
 
-// // Input elements use .value property
-// const guessInput = document.querySelector('.guess');
+console.log('Elements updated!');
 
-// // Reading input value
-// console.log('Current guess:', guessInput.value);
+// Input elements use .value property
+const guessInput = document.querySelector('.guess');
 
-// // Setting input value
-// guessInput.value = '10';
-// console.log('Guess set to:', guessInput.value);
+// Reading input value
+console.log('Current guess:', guessInput.value);
+
+// Setting input value
+guessInput.value = '10';
+console.log('Guess set to:', guessInput.value);
 
 // Practice selecting and modifying elements:
 // 1. Select the number display and change it to 15
@@ -63,15 +69,15 @@
 // Your code here...
 const numberEl = document.querySelector('.number');
 const highscoreEl = document.querySelector('.highscore');
-const guessInput = document.querySelector('.guess');
+const guessInput2 = document.querySelector('.guess');
 
 numberEl.textContent = 15;
 highscoreEl.textContent = 100;
-guessInput.value = 7;
+guessInput2.value = 7;
 
 console.log('Number:', numberEl);
 console.log('Highscore:', highscoreEl);
-console.log('Guess:', guessInput);
+console.log('Guess:', guessInput2);
 
 // Create your own game state variables:
 // 1. Create a player name variable
@@ -267,21 +273,123 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 
 ////////////////////////////////////
-// Final polish - professional finishing touches
+// Constants & Selectors (with suffixes to avoid conflicts)
 
-// In WIN block
-if (guess === secretNumber) {
-  // ... existing win logic ...
-  document.querySelector('.message').textContent = '🎉 Game Over!';
-  document.querySelector('.guess').value = '';
+const MIN_NUMBER1 = 1;
+const MAX_NUMBER1 = 20;
+const START_SCORE1 = 20;
+
+const bodyEl1 = document.body;
+const messageEl1 = document.querySelector('.message');
+const numberEl1 = document.querySelector('.number');
+const scoreEl1 = document.querySelector('.score');
+const highscoreEl1 = document.querySelector('.highscore');
+const guessInputEl1 = document.querySelector('.guess');
+const checkBtnEl1 = document.querySelector('.check');
+const againBtnEl1 = document.querySelector('.again');
+
+////////////////////////////////////
+// UI Helpers (with suffixes)
+
+function setMessage1(text) {
+  messageEl1.textContent = text;
+}
+function setNumber1(value) {
+  numberEl1.textContent = value;
+}
+function setScore1(value) {
+  scoreEl1.textContent = value;
+}
+function setHighscore1(value) {
+  highscoreEl1.textContent = value;
+}
+function setBackground1(color) {
+  bodyEl1.style.backgroundColor = color;
+}
+function disablePlay1(disabled) {
+  guessInputEl1.disabled = disabled;
+  checkBtnEl1.disabled = disabled;
+}
+function clearInput1() {
+  guessInputEl1.value = '';
 }
 
-// In LOSE block
-if (score < 1) {
-  // ... existing lose logic ...
-  document.querySelector('.message').textContent = '💀 Game Over!';
-  document.querySelector('.guess').value = '';
+////////////////////////////////////
+// Game State & Reset
+
+let secretNumber1 = Math.trunc(Math.random() * MAX_NUMBER1) + MIN_NUMBER1;
+let score1 = START_SCORE1;
+let highscore1 = 0;
+
+function resetGameState1() {
+  score1 = START_SCORE1;
+  secretNumber1 = Math.trunc(Math.random() * MAX_NUMBER1) + MIN_NUMBER1;
 }
 
-// In RESTART handler
-// (Already resetting background, also ensure inputs/score/message are reset)
+function renderInitialUI1() {
+  setMessage1('Start guessing...');
+  setNumber1('?');
+  setScore1(score1);
+  clearInput1();
+  disablePlay1(false);
+  setBackground1('');
+}
+
+// Call on load
+renderInitialUI1();
+
+////////////////////////////////////
+// Handlers
+
+checkBtnEl1.addEventListener('click', function () {
+  const guess = Number(guessInputEl1.value);
+
+  if (!guess) return setMessage1('No number!');
+  if (guess < MIN_NUMBER1 || guess > MAX_NUMBER1)
+    return setMessage1(
+      `Number must be between ${MIN_NUMBER1} and ${MAX_NUMBER1}!`
+    );
+
+  if (guess === secretNumber1) {
+    setMessage1('🎉 Correct Number!');
+    setNumber1(secretNumber1);
+    setBackground1('green');
+    if (score1 > highscore1) {
+      highscore1 = score1;
+      setHighscore1(highscore1);
+    }
+    disablePlay1(true);
+    clearInput1();
+    return;
+  }
+
+  setMessage1(guess > secretNumber1 ? '📈 Too high!' : '📉 Too low!');
+  score1--;
+  setScore1(score1);
+
+  if (score1 < 1) {
+    setMessage1('💥 You lost!');
+    setNumber1(secretNumber1);
+    setBackground1('red');
+    disablePlay1(true);
+    clearInput1();
+  }
+});
+
+againBtnEl1.addEventListener('click', function () {
+  resetGameState1();
+  renderInitialUI1();
+  guessInputEl1.focus();
+});
+
+// Enter key submits when possible
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && !checkBtnEl1.disabled) {
+    checkBtnEl1.click();
+  }
+});
+
+// Focus input on restart
+againBtnEl1.addEventListener('click', function () {
+  guessInputEl1.focus();
+});
